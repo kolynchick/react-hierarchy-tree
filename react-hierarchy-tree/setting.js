@@ -8,6 +8,7 @@ const DEFAULT_ELEMENT_INTERSECTION_CLASSNAME = "";
 const DEFAULT_CARET_CLASSNAME = "";
 const DEFAULT_NUMBER_CLASSNAME = "";
 const DEFAULT_CARET_COLLAPSE_CLASSNAME = "";
+const DEFAULT_VALUE_CLASSNAME = "";
 const TYPE_OF_NUMBER = "number";
 
 export const processSetting = (settings) => ({
@@ -20,5 +21,6 @@ export const processSetting = (settings) => ({
   elementIntersectionClassName: (settings.elementIntersectionClassName === undefined) ? DEFAULT_ELEMENT_INTERSECTION_CLASSNAME : settings.elementIntersectionClassName,
   caretClassName: (settings.caretClassName === undefined) ? DEFAULT_CARET_CLASSNAME : settings.caretClassName,
   caretCollapseClassName: (settings.caretCollapseClassName === undefined) ? DEFAULT_CARET_COLLAPSE_CLASSNAME : settings.caretCollapseClassName,
-  numberClassName: (settings.numberClassName === undefined) ? DEFAULT_NUMBER_CLASSNAME : settings.numberClassName
+  numberClassName: (settings.numberClassName === undefined) ? DEFAULT_NUMBER_CLASSNAME : settings.numberClassName,
+  valueClassName: (settings.valueClassName === undefined) ? DEFAULT_VALUE_CLASSNAME : settings.valueClassName,
 });

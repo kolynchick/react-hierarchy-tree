@@ -137,6 +137,7 @@ export class Element extends React.Component {
 
   renderNumber = () => <div className={this.props.setting.numberClassName}>{this.props.item.system.indexRender}</div>;
 
+  renderValue = () => <div className={this.props.setting.valueClassName}>{this.props.item.value}</div>
   render = () => {
     return (
       <div
@@ -146,7 +147,7 @@ export class Element extends React.Component {
       >
         <div>{this.renderNumber()}</div>
         <div>{this.props.isParent ? this.renderCaret() : null}</div>
-        <div>{this.props.item.value}</div>
+        <div>{this.renderValue()}</div>
       </div>
     );
   }

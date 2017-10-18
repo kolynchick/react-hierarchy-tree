@@ -15,7 +15,7 @@ const KEY_MOVE_DIRECTION_RIGHT_ELEMENT_DEFAULT = "ArrowRight";
 export const key = (state,action) => {
   switch (action.eventKey.key) {
     case KEY_ADD_ELEMENT_DEFAULT:
-      return add(state);
+      return add(state,action.addValue);
     case KEY_REMOVE_ELEMENT_DEFAULT:
       return remove(state);
     case KEY_ACTIVE_DIRECTION_UP_ELEMENT_DEFAULT:

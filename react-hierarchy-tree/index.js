@@ -28,6 +28,14 @@ export default class Hierarchy extends React.Component {
 
   update = () => this.setState({...this.store.getState()});
 
+  getHierarchyArray = () => this.state.hierarchy;
+
+  getHierarchySourceArray = () => this.state.hierarchySourse;
+
+  addElement = (value) => this.onKeyPress({key:"Enter"},value)
+
+  deleteELement = () => this.onKeyPress({key:"Delete"});
+
   onMouseEvent = (action,index,element) => this.store.dispatch(actionsHierarchy.mouseEvents(index,action,
       {
         coordinate: element.target.offsetTop,
@@ -38,12 +46,12 @@ export default class Hierarchy extends React.Component {
 
   callbackHierarchy = () => {
     if(typeof this.props.callbackHierarchy === TYPE_FUNCTION)
-      this.props.callbackHierarchy(this.state.hierarchySourse);
+      this.props.callbackHierarchy(this.state.hierarchy,this.state.hierarchySourse);
   }
 
   getContainerObject = () => this.refs.container;
 
-  onKeyPress = (action) => this.store.dispatch(actionsHierarchy.keyEvents(action));
+  onKeyPress = (action,value) => this.store.dispatch(actionsHierarchy.keyEvents(action,value));
 
   getElementRender = (element,indexCounter,isParentElement,isParentCollapse) => {
     const coordinateY = (indexCounter * Number(this.state.setting.height))+(indexCounter * Number(this.state.setting.offsetBottom));

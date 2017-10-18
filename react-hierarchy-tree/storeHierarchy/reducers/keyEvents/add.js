@@ -8,9 +8,9 @@ const ADD_INDEX_RENDER = "add";
 const TEMP_INDEX_RENDER = "-1";
 const DIRECTION_UP = "up";
 
-export const add = (state) => [...run(new ArrayHierarchyHelper(state)),tempCreate(state.length)];
+export const add = (state,value) => [...run(new ArrayHierarchyHelper(state),value),tempCreate(state.length)];
 
-const run = (arrayHelper) => {
+const run = (arrayHelper,value) => {
   const tempCurrentElementActive = arrayHelper.getElementByActionType(ACTIVE_ELEMENT_ACTION);
   const tempFutureIndexElementActive = tempCurrentElementActive !== undefined ?
                                        arrayHelper.recalcIndexRender(tempCurrentElementActive.system.indexRender,{type: ADD_INDEX_RENDER}) :
@@ -19,8 +19,18 @@ const run = (arrayHelper) => {
   arrayHelper.setArray(setAllDisabledActiveElement(arrayHelper));
   arrayHelper.changeIndexRenderDirection(tempFutureIndexElementActive,tempFutureParentIndexRenderActive,DIRECTION_UP);
   arrayHelper.changeIndexRender(TEMP_INDEX_RENDER,tempFutureIndexElementActive,tempFutureParentIndexRenderActive,changeOtherElementProperties);
+  arrayHelper.setArray(addValueElement(arrayHelper,tempFutureIndexElementActive,value));
   return arrayHelper.getArray();
 };
+
+const addValueElement = (arrayHelper,indexRender,newValue) => arrayHelper.getArray().map(
+  (element) => {
+    if(element.system.indexRender === indexRender)
+      element.value = newValue;
+    return element;
+  }
+);
+
 
 const setAllDisabledActiveElement = (arrayHelper) => arrayHelper.getArray().map(
   (element) => {

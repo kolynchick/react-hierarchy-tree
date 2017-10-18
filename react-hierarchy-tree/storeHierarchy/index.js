@@ -13,7 +13,7 @@ const KEY_EVENT = "KEY_EVENT";
 export const actionsHierarchy = {
   updateSetting: (newSetting) => ({type: UPDATE_SETTING, settingUpdate: newSetting}),
   mouseEvents: (index,type,coordinateInformation) => ({type: MOUSE_EVENT,indexRender: index,event: type,coordinate: coordinateInformation}),
-  keyEvents: (key) => ({type: KEY_EVENT, eventKey: key})
+  keyEvents: (key,value = "") => ({type: KEY_EVENT, eventKey: key, addValue: value})
 };
 /*********ACTIONS**********/
 
